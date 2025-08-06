@@ -55,7 +55,7 @@ int Heap::bubbleDown(int parentIndex) {
 }
 
 int Heap::getRoot() {
-	vector.at(0);
+	return vector.at(0);
 }
 
 
@@ -65,7 +65,7 @@ Heap::Heap(std::vector<int> inputVector) {
 
 void Heap::insert(int val) {
 	vector.push_back(val);
-	bubbleUp(vector.back());
+	bubbleUp(vector.size() - 1);
 }
 
 void Heap::remove() {
@@ -73,7 +73,7 @@ void Heap::remove() {
 	int temp = vector.at(rootIndex);
 	//Swap
 	vector.at(rootIndex) = vector.at(vector.back());
-	vector.at(vector.back()) = temp;
+	vector.at(vector.size()- 1) = temp;
 	//Remove last element
 	vector.pop_back();
 	//Bubble down
@@ -100,7 +100,7 @@ void Heap::bulidHeapBU(std::vector<int> inputVector) {
 
 void Heap::bulidHeapTD(std::vector<int> inputVector) {
 	for (int i = 0; i < inputVector.size(); i++) {
-		insert(i);
+		insert(inputVector[i]);
 	}
 
 }
